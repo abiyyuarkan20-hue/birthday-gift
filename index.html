@@ -1221,6 +1221,244 @@
         animation: none;
       }
     }
+
+    /* ===== TAMAN CINTA ===== */
+    #taman {
+      padding-bottom: 5rem;
+    }
+
+    .tm-kebun {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+      gap: 4px;
+      padding: 8px;
+    }
+
+    .tm-petak {
+      min-width: 44px;
+      min-height: 44px;
+      background: none;
+      border: none;
+      padding: 2px;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      touch-action: manipulation;
+    }
+
+    .tm-petak:focus-visible {
+      outline: 3px solid var(--yl);
+      outline-offset: 2px;
+    }
+
+    .tm-petak.dipilih svg {
+      filter: drop-shadow(0 0 3px var(--yl));
+    }
+
+    .tm-petak-kosong {
+      border: 2px dashed rgba(255, 244, 224, 0.35);
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'VT323', monospace;
+      font-size: 13px;
+      color: rgba(255, 244, 224, 0.5);
+      text-align: center;
+      padding: 2px;
+      line-height: 1.1;
+    }
+
+    .tm-chip {
+      background: rgba(26, 16, 51, .85);
+      border: 2px solid #000;
+      padding: 4px 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      text-shadow: 1px 1px 0 #000;
+      color: var(--cr);
+    }
+
+    #tmInfo {
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      line-height: 1.2;
+      min-height: 3.5em;
+    }
+
+    .tm-bar-bg {
+      height: 8px;
+      background: #241447;
+      border: 2px solid #000;
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    .tm-bar-fg {
+      height: 100%;
+      background: var(--mt);
+      transition: width 0.5s;
+    }
+
+    .tm-lencana {
+      display: inline-block;
+      background: var(--yl);
+      color: var(--ink);
+      border: 2px solid #000;
+      font-family: 'VT323', monospace;
+      font-size: 15px;
+      padding: 2px 6px;
+      margin: 2px;
+    }
+
+    .tm-spanduk {
+      border: 2px solid var(--mt);
+      background: rgba(110, 231, 183, 0.12);
+      padding: 8px 12px;
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      line-height: 1.2;
+      color: var(--mt);
+    }
+
+    .tm-bounce {
+      animation: tmBounce .35s cubic-bezier(.175, .885, .32, 1.275);
+    }
+
+    @keyframes tmBounce {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.25) translateY(-6px);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .tm-mekar {
+      animation: tmMekar .5s steps(5);
+    }
+
+    @keyframes tmMekar {
+      from {
+        transform: scale(0.6);
+        opacity: 0.3;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .tm-tetes {
+      position: absolute;
+      width: 4px;
+      height: 6px;
+      background: #7cc4ff;
+      border-radius: 0 0 2px 2px;
+      pointer-events: none;
+      animation: tmTetes linear forwards;
+    }
+
+    @keyframes tmTetes {
+      from {
+        transform: translateY(-20px);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(60px);
+        opacity: 0;
+      }
+    }
+
+    .tm-ember {
+      position: absolute;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .tm-kupu {
+      position: absolute;
+      pointer-events: auto;
+      cursor: pointer;
+      z-index: 1;
+      animation: tmKupuTerbang 8s ease-in-out forwards;
+    }
+
+    @keyframes tmKupuTerbang {
+      0% {
+        left: -10%;
+        top: 40%;
+        opacity: 0;
+      }
+
+      5% {
+        opacity: 1;
+      }
+
+      25% {
+        left: 30%;
+        top: 25%;
+      }
+
+      50% {
+        left: 60%;
+        top: 45%;
+      }
+
+      75% {
+        left: 80%;
+        top: 20%;
+      }
+
+      95% {
+        opacity: 1;
+      }
+
+      100% {
+        left: 110%;
+        top: 35%;
+        opacity: 0;
+      }
+    }
+
+    @keyframes tmKilauan {
+
+      0%,
+      100% {
+        opacity: 0.7;
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.15);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .tm-bounce,
+      .tm-mekar,
+      .tm-tetes,
+      .tm-ember,
+      .tm-kupu {
+        animation-duration: .01s;
+        transition-duration: .01s;
+      }
+    }
   </style>
 </head>
 
@@ -1350,7 +1588,11 @@
       <div class="min-h-[85dvh] flex flex-col items-center justify-center text-center gap-5">
         <div id="lockTitle" class="pix text-pk text-sm leading-relaxed select-none">★ TOP SECRET ★</div>
         <h1 class="pix text-xl leading-loose text-yl">MISI RAHASIA<br>OPERASI 26/10</h1>
-        <button id="btnLockAmplop" class="btn btn-pr w-full max-w-sm hidden"></button>
+        <!-- Pintas layar luar (amplop + taman) -->
+        <div id="lockPintas" class="grid grid-cols-2 gap-3 w-full max-w-sm hidden">
+          <button id="btnLockAmplop" class="btn btn-pr"></button>
+          <button id="btnLockTaman" class="btn btn-yl hidden"></button>
+        </div>
         <div class="frame p-5 w-full max-w-sm">
           <p class="text-2xl leading-tight">🔒 DOKUMEN RAHASIA<br>Hanya untuk <b class="text-mt"
               data-bind="namaAsli"></b></p>
@@ -1776,6 +2018,16 @@
           </div>
         </div>
 
+        <!-- TAMAN CINTA kartu finale -->
+        <div id="tmKartuFinale" class="hidden">
+          <h3 class="pix text-xs text-mt mt-10 mb-3 chip" id="tmKartuJudul"></h3>
+          <div class="frame p-4 text-center">
+            <div class="text-4xl mb-2">🌻</div>
+            <p class="text-xl leading-tight mb-4" id="tmKartuTeks"></p>
+            <button class="btn btn-yl w-full" id="tmBtnFinale"></button>
+          </div>
+        </div>
+
         <h3 class="pix text-xs text-mt mt-10 mb-3 chip">▸ BLOOPERS</h3>
         <div id="bloopers" class="grid grid-cols-2 gap-4"></div>
 
@@ -1814,6 +2066,58 @@
       <p id="ampKosong" class="hidden text-xl leading-tight text-center mt-6"></p>
       <p class="text-center text-lg opacity-70 mt-5" id="ampKunjungan"></p>
       <div class="text-center mt-4"><button type="button" class="btn btn-pr" id="ampKembali"></button></div>
+      <div class="text-center mt-3"><button type="button" class="btn btn-yl !text-[10px] !p-3 hidden"
+          id="ampBtnKeTaman"></button></div>
+    </section>
+
+    <!-- ====== TAMAN CINTA ====== -->
+    <section id="taman" class="screen">
+      <div class="text-center mb-4">
+        <h2 class="pix text-sm leading-loose text-yl chip" id="tmJudul"></h2>
+        <p class="text-2xl mt-2 leading-tight" id="tmSub"></p>
+      </div>
+
+      <!-- Status chips -->
+      <div class="flex flex-wrap gap-2 justify-center mb-3" id="tmStatus">
+        <span class="tm-chip" id="tmChipBunga"></span>
+        <span class="tm-chip" id="tmChipBeruntun"></span>
+        <span class="tm-chip" id="tmChipSiram"></span>
+      </div>
+
+      <!-- Spanduk kondisi -->
+      <div id="tmSpanduk" class="tm-spanduk mb-3 hidden"></div>
+
+      <!-- Kebun -->
+      <div class="frame p-2 mt-2 relative overflow-hidden" id="tmKebunWrap">
+        <div class="tm-kebun" id="tmKebun" role="group" aria-label="Kebun bunga, satu bunga untuk tiap bulan"></div>
+      </div>
+
+      <!-- Info bunga terpilih -->
+      <div id="tmInfo" class="frame p-3 mt-3 text-cr" aria-live="polite"></div>
+
+      <!-- Tombol Siram -->
+      <div class="mt-4 text-center">
+        <button class="btn btn-mt w-full" id="tmBtnSiram" aria-label="Siram taman"></button>
+        <p class="text-xl mt-2 leading-tight hidden" id="tmAjakBesok"></p>
+      </div>
+
+      <!-- Kata hari ini -->
+      <div id="tmKataWrap" class="hidden frame p-3 mt-4">
+        <div class="pix text-[8px] text-yl mb-2" id="tmKataJudul"></div>
+        <p class="text-2xl leading-tight" id="tmKataTeks"></p>
+      </div>
+
+      <!-- Lencana -->
+      <div id="tmLencanaWrap" class="mt-4 hidden">
+        <div class="pix text-[8px] text-mt mb-2" id="tmLencanaJudul"></div>
+        <div id="tmLencanaList"></div>
+      </div>
+
+      <!-- Tombol navigasi -->
+      <div class="mt-6 flex gap-3 justify-center flex-wrap">
+        <button type="button" class="btn btn-pr hidden" id="tmBtnAmplop"></button>
+        <button type="button" class="btn" id="tmBtnKembali"></button>
+      </div>
     </section>
 
   </main>
@@ -1856,7 +2160,7 @@
       namaAsli: "Zahwa Davina",
 
       tanggalJadian: [2024, 11, 3],
-      kodeKunci: ["03112024", "031124", "3112024", "26102026", "261026"],
+      kodeKunci: ["03112024", "031124", "3112024", "26102005", "261005"],
       petunjukKode: "Petunjuk: tanggal kita resmi jadian (DDMMYYYY). Tanggal ulang tahunmu juga boleh 😉",
       lagu: "music/Hannah Montana - Rex Orange County (Lyrics).mp3",
       laguJudul: "Hannah Montana — Rex Orange County",
@@ -2146,7 +2450,7 @@
           { id: "seblak", ikon: "🍲", nama: "Seblak", favorit: false }
         ],
         dialog: { menetas: ["Telur menetas! Kenalkan: Biyyuna!"], ceria: ["Aku senang banget!", "Kamu baik deh.", "Yuk lanjut, Agen!"], biasa: ["Halo…", "Aku di sini, lho."], sedih: ["Elus aku dong…", "Aku lapar…"], makan: ["Nyam nyam!", "Enak!"], favorit: ["INI FAVORITKU! 💗"], elus: ["Hihi, geli!", "Lagi, lagi!"], peluk: ["Hangat banget…"], naikTahap: ["Aku tumbuh!", "Lihat, aku makin besar!"] },
-        teksFinale: "Biyyuna sayang Zahwa dan Abiyyu. 💗", teksCredits: "Biyyuna (anak virtual kalian)"
+        teksFinale: "Biyyuna sayang Zahwa dan Abiyyu. 💗", teksCredits: "Biyyuna (anak virtual kita)"
       },
 
       /* ================= FITUR BARU: KUE ================= */
@@ -2161,10 +2465,118 @@
           "Tahun depan kamu akan lebih bahagia dari tahun ini. Sudah ada yang mengatur.", "Bintangmu hari ini: sangat disayang. Tidak ada kelemahan."
         ],
         ramalanRahasia: "Ramalan terakhir tidak bisa dibaca semua orang: kamu dan {pengirim} akan terus bersama, dari level 1 sampai level yang belum ada namanya. 💗"
+      },
+      /* FITUR: TAMAN CINTA */
+      taman: {
+        aktif: true,
+        judul: "TAMAN CINTA",
+        subjudul: "Satu bunga untuk tiap bulan kita. Siram sekali sehari ya, biar tamannya senang.",
+        mulai: "2024-11-03",
+        turunPerHari: 10, naikSiram: 40, lantai: 25,
+        penandaBelumSiram: " 💧",
+        tombolFinale: "KUNJUNGI TAMAN 🌻",
+        tombolLock: "🌻 TAMAN CINTA",
+        kartuFinale: {
+          judul: "TAMAN CINTA 🌻",
+          teks: "Arkan menanam satu bunga untuk setiap bulan kita. Tiap tanggal 3 bertambah satu. Siram sekali sehari ya, tamannya senang ditengok."
+        },
+        intro: { teks: "Arkan menanam satu bunga untuk setiap bulan kita. Sampai hari ini sudah {n} bunga. Jagain ya, cukup disiram sekali sehari." },
+        teksUI: {
+          siram: "💧 SIRAM TAMAN", sudahSiramLabel: "SUDAH DISIRAM HARI INI ✓",
+          sudahSiram: "Hari ini sudah disiram. Kembali lagi besok ya, tamannya senang ditengok 🌼",
+          ajakBesok: "Besok ada air lagi buat bunga-bunganya.",
+          chipBunga: "{n} BUNGA", chipBeruntun: "{n} HARI", chipBeruntunMulai: "MULAI LAGI HARI INI!",
+          chipBelum: "BELUM DISIRAM", chipSudah: "SUDAH DISIRAM ✓",
+          kembali: "← KEMBALI", keAmplop: "✉️ LACI AMPLOP", keTaman: "🌻 KE TAMAN",
+          kebunLabel: "Kebun bunga, satu bunga untuk tiap bulan",
+          kataHariIni: "KATA HARI INI", lencanaJudul: "LENCANA",
+          petakKosong: "Bunga berikutnya ditanam {tanggal}",
+          infoBunga: "Bunga ke-{n} · {jenis} · {tanggal}",
+          ariaBunga: "Bunga bulan ke-{n}, {jenis}, {tahap}, {tingkat}, tanggal {tanggal}",
+          tahap: ["benih", "tunas", "kuncup", "mekar"],
+          tingkat: { segar: "segar", lesu: "agak lesu", layu: "layu, perlu air", tidur: "tidur siang" },
+          deskTingkat: {
+            segar: "Segar dan senang 🌼",
+            lesu: "Agak lesu, haus nih 💧",
+            layu: "Layu sedikit, tapi masih sayang kamu 🥀",
+            tidur: "Lagi tidur siang. Bangunin pakai air ya 😴"
+          }
+        },
+        spanduk: {
+          tanggal3: "Hari ini tanggal 3, hari jadian kita. Bunga baru ditanam. 🌱",
+          emas: "Bunga Emas tahun ke-{tahunKe} ditanam. Spesial buat kamu. 🌟",
+          balik: "Tamannya kangen kamu 🥺 Tapi masih sehat kok. Siram dulu yuk, nanti pulih pelan-pelan.",
+          pulih: "Yeay, tamannya mulai pulih! Besok disiram lagi ya, biar segar penuh. 💚",
+          mekar: "Bunga ke-{n} mekar! Cantik banget, seperti kamu. 🌸"
+        },
+        jenis: [
+          { nama: "Aster", bentuk: "daisy", kelopak: "#fff4e0", pusat: "#ffd93d", tangkai: "#4fbf8b" },
+          { nama: "Tulip", bentuk: "tulip", kelopak: "#ff6fae", pusat: "#c2417f", tangkai: "#4fbf8b" },
+          { nama: "Bunga Matahari", bentuk: "matahari", kelopak: "#ffd93d", pusat: "#8a5a36", tangkai: "#3da878" },
+          { nama: "Mawar", bentuk: "mawar", kelopak: "#e8466e", pusat: "#a62a4c", tangkai: "#3da878" },
+          { nama: "Lavender", bentuk: "lavender", kelopak: "#b79ced", pusat: "#8b6fd1", tangkai: "#4fbf8b" },
+          { nama: "Sakura", bentuk: "sakura", kelopak: "#ffc2dc", pusat: "#ff8fbd", tangkai: "#8a5a36" },
+          { nama: "Teratai", bentuk: "teratai", kelopak: "#ffb3d9", pusat: "#ffd93d", tangkai: "#3da878" },
+          { nama: "Melati", bentuk: "melati", kelopak: "#ffffff", pusat: "#ffe9a8", tangkai: "#4fbf8b" },
+          { nama: "Anggrek", bentuk: "anggrek", kelopak: "#d9a6ff", pusat: "#ffd93d", tangkai: "#4fbf8b" },
+          { nama: "Poppy", bentuk: "poppy", kelopak: "#ff7b54", pusat: "#1a1033", tangkai: "#3da878" },
+          { nama: "Dahlia", bentuk: "dahlia", kelopak: "#ff8fbd", pusat: "#ffd93d", tangkai: "#4fbf8b" },
+          { nama: "Krisan", bentuk: "krisan", kelopak: "#9bc1ff", pusat: "#fff4e0", tangkai: "#3da878" }
+        ],
+        jenisEmas: { nama: "Bunga Emas", kelopak: "#ffd93d", pusat: "#ff6fae", tangkai: "#3da878", mahkota: "#fff4e0" },
+        kenangan: {
+          /* Isi sendiri, satu kalimat per bulan, contoh:
+             1: "Bulan pertama. Arkan gugup, tapi senang banget.",
+             12: "Setahun! Terima kasih sudah bertahan." */
+        },
+        captionUmum: [
+          "Bulan ke-{n}. Satu bulan lagi kita lewati bareng.",
+          "Bunga ini tumbuh karena kamu rajin ada di cerita Arkan.",
+          "Kalau bunga ini bisa ngomong, dia bakal bilang: terima kasih, {n} bulan ini seru.",
+          "Arkan nanam ini sambil senyum-senyum, mikirin kamu.",
+          "Bulan ke-{n}, dan Arkan masih pengin nambah bunga lagi.",
+          "Tiap bunga di sini, satu bulan Arkan bersyukur punya kamu."
+        ],
+        kataHarian: [
+          "Hari ini Arkan mau lebih peka dari kemarin.",
+          "Kalau kamu capek, kabari Arkan. Arkan yang datang duluan.",
+          "Kamu itu alasan Arkan semangat belajar jadi lebih baik.",
+          "Hari ini Arkan doain urusanmu lancar, satu per satu.",
+          "Minum air dulu ya. Bunga aja butuh air, apalagi kamu.",
+          "Arkan bangga sama usaha kecilmu hari ini, sekecil apa pun.",
+          "Kalau ada yang bikin kesal, ceritain ke Arkan. Arkan dengerin dulu.",
+          "Senyum kamu hari ini sudah cukup bikin hari Arkan bagus.",
+          "Jangan lupa makan. Kalau Arkan di dekatmu, udah Arkan beliin.",
+          "Arkan janji terus berusaha jadi tempat pulang yang nyaman.",
+          "Kamu nggak harus kuat setiap hari. Istirahat itu boleh.",
+          "Hari ini giliran Arkan yang bikin kamu ketawa.",
+          "Terima kasih sudah mampir ke taman ini. Arkan senang banget.",
+          "Satu hal yang Arkan yakin: kamu lebih hebat dari yang kamu kira."
+        ],
+        kupu: [
+          "Kupu-kupu bilang: Arkan sayang kamu.",
+          "Hihi, geli! Kupu-kupunya kabur sambil senyum.",
+          "Kupu-kupu ini titipan Arkan buat nemenin kamu."
+        ],
+        lencana: [
+          { hari: 3, judul: "Tukang Kebun Cilik", pesan: "3 hari berturut-turut! Bunganya senang banget." },
+          { hari: 7, judul: "Penjaga Taman", pesan: "Seminggu penuh! Arkan bangga sama kamu." },
+          { hari: 14, judul: "Ahli Bunga", pesan: "Dua minggu! Tamanmu makin cantik." },
+          { hari: 30, judul: "Ratu Taman", pesan: "30 hari! Arkan rencanain hadiah kecil buat ini." },
+          { hari: 50, judul: "Pawang Kupu-Kupu", pesan: "50 hari! Kupu-kupunya makin banyak." },
+          { hari: 100, judul: "Legenda Taman Cinta", pesan: "100 hari! Arkan nggak nyangka kamu sesetia ini. Terima kasih." }
+        ],
+        langitJam: [[4, "subuh"], [6, "pagi"], [10, "siang"], [14, "siangakhir"], [16, "sore"], [17, "senja"], [18, "petang"], [19, "malamIndah"], [24, "malamIndah"]],
+        maskot: {
+          masuk: ["Yuk siram tamannya!", "Bunganya nunggu kamu, nih."],
+          sudahSiram: ["Tamannya udah seger. Kembali besok ya!"],
+          balik: ["Tamannya kangen. Siram yuk, pelan-pelan juga nggak apa-apa."],
+          mekar: ["Wah, ada yang mekar!"],
+          lencana: ["Lencana baru! Hebat!"]
+        }
       }
     };
 
-    /* ====================== UTIL ====================== */
     const $ = (s, r = document) => r.querySelector(s);
     const $$ = (s, r = document) => [...r.querySelectorAll(s)];
     const fill = s => s.replace(/\{(\w+)\}/g, (_, k) => CONFIG[k] ?? "{" + k + "}");
@@ -2232,18 +2644,19 @@
     /* ====================== RESET LOKAL ====================== */
     const uParams = new URLSearchParams(window.location.search);
     if (uParams.get('reset') === '1') {
-      ['zahwadex_2610', 'biyyuna', 'kue-terbuka', 'dialog-ditampilkan', 'kontrak', 'amplop-2610', 'misi-selesai-2610'].forEach(k => { try { localStorage.removeItem(k); } catch (e) { } });
+      ['zahwadex_2610', 'biyyuna', 'kue-terbuka', 'dialog-ditampilkan', 'kontrak', 'amplop-2610', 'misi-selesai-2610', 'taman-2610'].forEach(k => { try { localStorage.removeItem(k); } catch (e) { } });
     }
 
     /* ====================== NAVIGASI & CLEANUP ====================== */
     const order = ["lock", "brief", "scan", "kartu", "l1", "l2", "l3", "l4", "lboss", "l5", "fin"];
     const STEPS = ['l1', 'l2', 'l3', 'l4', 'lboss', 'l5'];
+    const LAYAR_LUAR = ['amplop', 'taman']; // layar di luar urutan linear, tanpa SKIP
     let cur = "lock", skipT = null;
     const inits = {};
 
     function go(id) {
       cleanup();
-      $$(".screen").forEach(s => s.classList.remove("active"));
+      $$(`.screen`).forEach(s => s.classList.remove("active"));
       $("#" + id).classList.add("active");
       cur = id; window.scrollTo({ top: 0 });
 
@@ -2261,7 +2674,7 @@
       } else if (id === "fin") { $("#hudLevel").textContent = "SELESAI!"; $("#hudBar").style.width = "100%"; }
 
       clearTimeout(skipT); $("#skipBtn").classList.add("hidden");
-      if (id !== "lock" && id !== "fin" && id !== "amplop") skipT = setTimeout(() => $("#skipBtn").classList.remove("hidden"), id === "scan" ? 5000 : 30000);
+      if (!LAYAR_LUAR.includes(id) && id !== "lock" && id !== "fin") skipT = setTimeout(() => $("#skipBtn").classList.remove("hidden"), id === "scan" ? 5000 : 30000);
 
       if (id !== "lock") maskot.show();
       emit('screen:enter', { id });
@@ -2279,6 +2692,7 @@
       if (typeof errorDialog !== 'undefined') errorDialog.closeAll();
       if (typeof pet !== 'undefined') pet.hidePanel();
       if (typeof amplopManager !== 'undefined') amplopManager.cleanup();
+      if (typeof tamanManager !== 'undefined') tamanManager.cleanup();
       if (cur === "scan") { clearInterval(scanT); clearTimeout(scanHintT); }
     }
 
@@ -3637,23 +4051,23 @@
       }
       function kembali() {
         sfx.tap();
-        if (asal === "fin") {
-          cleanup();
-          $$(".screen").forEach(s => s.classList.remove("active")); $("#fin").classList.add("active");
-          cur = "fin"; window.scrollTo({ top: 0 });
-          $("#hud").classList.remove("hidden"); $("#btnDexFloat").classList.remove("hidden");
-          clearTimeout(skipT); $("#skipBtn").classList.add("hidden");
-          maskot.hide(); sky.setStage(sky.stageFor("fin"));
-          if (typeof startPhotoParticles === "function") startPhotoParticles();
-          const k = $("#ampKartu"); if (k) k.scrollIntoView({ block: "center" });
-        } else go("lock");
+        if (asal === "fin") kembaliKeFin($("#ampKartu"));
+        else go("lock");
       }
       function cleanup() {
         clearInterval(cdT); cdT = null; clearTimeout(sapaT); sapaT = null;
         tutup(false);
       }
       function tampilTombolLock() {
-        $("#btnLockAmplop").classList.toggle("hidden", !(A().aktif && ampStore.selesai()));
+        const selesai = ampStore.selesai();
+        const showAmplop = A().aktif && selesai;
+        const showTaman = CONFIG.taman && CONFIG.taman.aktif && selesai;
+        $("#btnLockAmplop").classList.toggle("hidden", !showAmplop);
+        if (typeof $("#btnLockTaman") !== 'undefined' && $("#btnLockTaman")) {
+          $("#btnLockTaman").classList.toggle("hidden", !showTaman);
+        }
+        const showPintas = showAmplop || showTaman;
+        if ($("#lockPintas")) $("#lockPintas").classList.toggle("hidden", !showPintas);
       }
       function init() {
         const C = A();
@@ -3672,9 +4086,16 @@
         $("#ampBtnFav").addEventListener("click", toggleFav);
         $("#ampBtnSuara").addEventListener("click", klikSuara);
         $("#ampCard").addEventListener("pointerdown", () => { const S = sheetAktif; if (S && S.lewati) S.lewati(); });
-        on("finale:start", () => { ampStore.setSelesai(); });
+        // Cross-link ke Taman
+        const btnKeTaman = $("#ampBtnKeTaman");
+        if (btnKeTaman) {
+          btnKeTaman.textContent = CONFIG.taman && CONFIG.taman.teksUI ? CONFIG.taman.teksUI.keTaman : "🌻 KE TAMAN";
+          if (CONFIG.taman && CONFIG.taman.aktif && ampStore.selesai()) btnKeTaman.classList.remove("hidden");
+          btnKeTaman.addEventListener("click", () => { sfx.tap(); if (typeof tamanManager !== 'undefined') tamanManager.masuk("amplop"); else go("taman"); });
+        }
+        on("finale:start", () => { ampStore.setSelesai(); if (btnKeTaman && CONFIG.taman && CONFIG.taman.aktif) btnKeTaman.classList.remove("hidden"); });
         on("amplop:semua", () => { semuaTunda = true; });
-        on("screen:enter", ({ id }) => { if (id === "lock") tampilTombolLock(); });
+        on("screen:enter", ({ id }) => { if (id === "lock") tampilTombolLock(); if (id === "amplop") { if (btnKeTaman && CONFIG.taman && CONFIG.taman.aktif && ampStore.selesai()) btnKeTaman.classList.remove("hidden"); else if (btnKeTaman) btnKeTaman.classList.add("hidden"); } });
         tampilTombolLock();
       }
       init();
@@ -3682,12 +4103,698 @@
     })();
     inits.amplop = () => amplopManager.masuk();
 
-    /* ====================== INIT DATA DOM ====================== */
+    /* ====================== SHARED: kembaliKeFin ====================== */
+    function kembaliKeFin(idKartu) {
+      cleanup();
+      $$(`.screen`).forEach(s => s.classList.remove("active")); $("#fin").classList.add("active");
+      cur = "fin"; window.scrollTo({ top: 0 });
+      $("#hud").classList.remove("hidden"); $("#btnDexFloat").classList.remove("hidden");
+      clearTimeout(skipT); $("#skipBtn").classList.add("hidden");
+      maskot.hide(); sky.setStage(sky.stageFor("fin"));
+      if (typeof startPhotoParticles === "function") startPhotoParticles();
+      const k = typeof idKartu === "string" ? $(idKartu) : idKartu;
+      if (k) setTimeout(() => k.scrollIntoView({ block: "center" }), 80);
+    }
+
+    /* ====================== FITUR: TAMAN CINTA ====================== */
+    function tmFill(s, vars) {
+      vars = vars || {};
+      return String(s).replace(/\{(\w+)\}/g, (_, k) => {
+        if (vars[k] != null) return vars[k];
+        if (CONFIG.taman && CONFIG.taman.teksUI && CONFIG.taman.teksUI[k] != null) return CONFIG.taman.teksUI[k];
+        return CONFIG[k] != null ? CONFIG[k] : '';
+      });
+    }
+
+    // ---- rumus waktu taman ----
+    function tmBulanSelesai(h) {
+      const t = parseYMD(h);
+      const mu = parseYMD(CONFIG.taman.mulai);
+      const y0 = mu.y, m0 = mu.m, T3 = mu.d;
+      const raw = (t.y - y0) * 12 + (t.m - m0) - (t.d < T3 ? 1 : 0);
+      return Math.max(0, raw);
+    }
+    function tmTanggalBulan(N) {
+      const mu = parseYMD(CONFIG.taman.mulai);
+      const y0 = mu.y, m0 = mu.m, T3 = mu.d;
+      const totalM = m0 - 1 + N;
+      const y = y0 + Math.floor(totalM / 12);
+      const m = (totalM % 12) + 1;
+      return y + '-' + ampPad(m) + '-' + ampPad(T3);
+    }
+    function tmHitungKesehatan(state) {
+      const C = CONFIG.taman;
+      if (!state.terakhirSiram) return 100;
+      const h = hariIni();
+      const selHari = Math.max(0, selisihHari(state.terakhirSiram, h));
+      // Jam dimundurkan: perlakukan seperti sudah siram hari ini
+      if (selHari < 0 || (selHari === 0 && state.terakhirSiram > h)) return Math.min(100, state.kesehatan);
+      const lewat = Math.max(0, selHari - 1);
+      return Math.max(C.lantai, state.kesehatan - lewat * C.turunPerHari);
+    }
+    function tmTingkat(k) {
+      if (k >= 80) return 'segar';
+      if (k >= 55) return 'lesu';
+      if (k >= 35) return 'layu';
+      return 'tidur';
+    }
+    function campurWarna(hex, faktor) {
+      // faktor 0 = warna asli, 1 = abu hijau
+      const abu = [144, 180, 156];
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      const rr = Math.round(r + (abu[0] - r) * faktor);
+      const gg = Math.round(g + (abu[1] - g) * faktor);
+      const bb = Math.round(b + (abu[2] - b) * faktor);
+      return '#' + [rr, gg, bb].map(x => ampPad(x.toString(16))).join('');
+    }
+
+    // ---- sprite bunga SVG (12×14 piksel) ----
+    function spriteBunga(jenisIdx, tahap, tingkat, idx) {
+      const C = CONFIG.taman;
+      const isEmas = jenisIdx % 12 === 0 && jenisIdx > 0; // kelipatan 12
+      const J = isEmas ? C.jenisEmas : C.jenis[(jenisIdx - 1) % 12];
+      const faktorAbu = tingkat === 'tidur' ? 0.7 : tingkat === 'layu' ? 0.4 : tingkat === 'lesu' ? 0.15 : 0;
+      const kpk = campurWarna(J.kelopak, faktorAbu);
+      const pst = campurWarna(J.pusat, faktorAbu);
+      const tgk = campurWarna(J.tangkai, faktorAbu);
+      const gelap = campurWarna(J.pusat || J.kelopak, faktorAbu + 0.2 > 1 ? 1 : faktorAbu + 0.2);
+      const miring = ((idx || 0) % 3 === 1) ? 1 : 0; // variasi kecil deterministik
+
+      const R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
+      let s = `<svg viewBox="0 0 12 14" width="40" height="40" shape-rendering="crispEdges" aria-hidden="true" focusable="false">`;
+      // tanah
+      s += R(0, 11, 12, 3, '#6b4423') + R(1, 12, 10, 2, '#8a5a36');
+
+      if (tahap === 0) {
+        // benih: gundukan + biji
+        s += R(4, 10, 4, 1, '#6b4423') + R(5, 9, 2, 1, '#a07040');
+      } else if (tahap === 1) {
+        // tunas
+        s += R(5, 7, 2, 4, tgk) + R(3, 8, 2, 2, tgk) + R(3, 7, 2, 1, campurWarna(J.kelopak, faktorAbu)) + R(7, 6, 2, 2, tgk) + R(7, 5, 2, 1, campurWarna(J.kelopak, faktorAbu));
+      } else if (tahap === 2) {
+        // kuncup tertutup
+        s += R(5, 4, 2, 7, tgk);
+        s += R(4, 4, 4, 1, kpk) + R(4, 3, 4, 2, kpk) + R(5, 2, 2, 1, kpk);
+      } else {
+        // mekar atau tidur (mirip kuncup jika tidur)
+        const topOff = tingkat === 'tidur' ? 2 : (tingkat === 'layu' ? 1 + miring : (tingkat === 'lesu' ? miring : 0));
+        s += R(5, 4 + topOff, 2, 7 - topOff, tgk); // tangkai
+        if (tingkat === 'tidur') {
+          // kepala menguncup + z pixel
+          s += R(4, 1, 4, 3 + topOff, kpk) + R(5, 0, 2, 2, pst);
+          s += `<text x="9" y="3" font-size="2" fill="${campurWarna('#ffffff', 0.2)}" font-family="monospace" shape-rendering="crispEdges">z</text>`;
+        } else if (J.bentuk === 'matahari') {
+          const D = campurWarna(J.pusat, faktorAbu + 0.15 > 1 ? 1 : faktorAbu + 0.15);
+          const topY = topOff;
+          s += R(2, 1 + topY, 1, 1, D) + R(5, 0 + topY, 2, 1, D) + R(9, 1 + topY, 1, 1, D);
+          s += R(1, 2 + topY, 1, 1, D) + R(2, 2 + topY, 1, 1, kpk) + R(3, 2 + topY, 1, 1, kpk) + R(4, 2 + topY, 1, 1, kpk) + R(5, 2 + topY, 1, 1, kpk) + R(6, 2 + topY, 1, 1, kpk) + R(7, 2 + topY, 1, 1, kpk) + R(8, 2 + topY, 1, 1, kpk) + R(9 + 1, 2 + topY, 1, 1, D);
+          s += R(1, 3 + topY, 1, 1, kpk) + R(2, 3 + topY, 1, 1, kpk) + R(3, 3 + topY, 1, 1, pst) + R(4, 3 + topY, 1, 1, pst) + R(5, 3 + topY, 1, 1, pst) + R(6, 3 + topY, 1, 1, pst) + R(7, 3 + topY, 1, 1, pst) + R(8, 3 + topY, 1, 1, kpk) + R(9, 3 + topY, 1, 1, kpk);
+          s += R(0, 4 + topY, 1, 1, kpk) + R(1, 4 + topY, 1, 1, kpk) + R(2, 4 + topY, 1, 1, kpk) + R(3, 4 + topY, 1, 1, pst) + R(4, 4 + topY, 1, 1, pst) + R(5, 4 + topY, 1, 1, pst) + R(6, 4 + topY, 1, 1, pst) + R(7, 4 + topY, 1, 1, kpk) + R(8, 4 + topY, 1, 1, kpk) + R(9, 4 + topY, 1, 1, kpk) + R(10, 4 + topY, 1, 1, kpk);
+          s += R(1, 5 + topY, 1, 1, kpk) + R(2, 5 + topY, 1, 1, kpk) + R(3, 5 + topY, 1, 1, pst) + R(4, 5 + topY, 1, 1, pst) + R(5, 5 + topY, 1, 1, pst) + R(6, 5 + topY, 1, 1, pst) + R(7, 5 + topY, 1, 1, pst) + R(8, 5 + topY, 1, 1, kpk) + R(9, 5 + topY, 1, 1, kpk);
+          s += R(1, 6 + topY, 1, 1, D) + R(2, 6 + topY, 1, 1, kpk) + R(3, 6 + topY, 1, 1, kpk) + R(4, 6 + topY, 1, 1, kpk) + R(5, 6 + topY, 1, 1, kpk) + R(6, 6 + topY, 1, 1, kpk) + R(7, 6 + topY, 1, 1, kpk) + R(8, 6 + topY, 1, 1, kpk) + R(9 + 1, 6 + topY, 1, 1, D);
+          s += R(2, 7 + topY, 1, 1, D) + R(5, 7 + topY, 2, 1, D) + R(9, 7 + topY, 1, 1, D);
+          if (isEmas) { s += R(4, 0 + topY, 4, 1, J.mahkota || '#fff4e0') + R(5, 0, 2, 1, J.mahkota || '#fff4e0'); }
+        } else {
+          // daisy / default
+          const topY = topOff;
+          s += R(4, 1 + topY, 1, 1, kpk) + R(7, 1 + topY, 1, 1, kpk);
+          s += R(3, 2 + topY, 1, 1, kpk) + R(4, 2 + topY, 1, 1, kpk) + R(5, 2 + topY, 1, 1, kpk) + R(6, 2 + topY, 1, 1, kpk) + R(7, 2 + topY, 1, 1, kpk) + R(8, 2 + topY, 1, 1, kpk);
+          s += R(3, 3 + topY, 1, 1, kpk) + R(4, 3 + topY, 1, 1, kpk) + R(5, 3 + topY, 1, 1, pst) + R(6, 3 + topY, 1, 1, pst) + R(7, 3 + topY, 1, 1, kpk) + R(8, 3 + topY, 1, 1, kpk);
+          s += R(2, 4 + topY, 1, 1, kpk) + R(3, 4 + topY, 1, 1, kpk) + R(4, 4 + topY, 1, 1, pst) + R(5, 4 + topY, 1, 1, pst) + R(6, 4 + topY, 1, 1, pst) + R(7, 4 + topY, 1, 1, pst) + R(8, 4 + topY, 1, 1, kpk) + R(9, 4 + topY, 1, 1, kpk);
+          s += R(3, 5 + topY, 1, 1, kpk) + R(4, 5 + topY, 1, 1, kpk) + R(5, 5 + topY, 1, 1, pst) + R(6, 5 + topY, 1, 1, pst) + R(7, 5 + topY, 1, 1, kpk) + R(8, 5 + topY, 1, 1, kpk);
+          s += R(3, 6 + topY, 1, 1, kpk) + R(4, 6 + topY, 1, 1, kpk) + R(5, 6 + topY, 1, 1, kpk) + R(6, 6 + topY, 1, 1, kpk) + R(7, 6 + topY, 1, 1, kpk) + R(8, 6 + topY, 1, 1, kpk);
+          s += R(4, 7 + topY, 1, 1, kpk) + R(7, 7 + topY, 1, 1, kpk);
+          // layu: rontok 1 kelopak
+          if (tingkat === 'layu') { /* kelopak sudah dikurangi via topOff */ }
+          if (isEmas) { s += R(4, 0, 4, 1, J.mahkota || '#fff4e0') + R(5, 0, 2, 1, '#fff4e0'); }
+        }
+      }
+      return s + '</svg>';
+    }
+
+    function spriteKupu() {
+      const w = '#b79ced', d = '#8b6fd1', b = '#1a1033';
+      return `<svg viewBox="0 0 10 7" width="28" height="20" shape-rendering="crispEdges" aria-hidden="true">
+        <rect x="0" y="1" width="3" height="2" fill="${w}"/><rect x="0" y="0" width="2" height="1" fill="${w}"/>
+        <rect x="7" y="1" width="3" height="2" fill="${w}"/><rect x="8" y="0" width="2" height="1" fill="${w}"/>
+        <rect x="1" y="3" width="3" height="2" fill="${d}"/><rect x="6" y="3" width="3" height="2" fill="${d}"/>
+        <rect x="4" y="1" width="2" height="5" fill="${b}"/><rect x="4" y="0" width="1" height="1" fill="${b}"/><rect x="5" y="0" width="1" height="1" fill="${b}"/>
+      </svg>`;
+    }
+
+    // ---- tamanStore ----
+    const tamanStore = (() => {
+      const KEY = 'taman-2610';
+      let mem = null;
+      const baru = () => ({ v: 1, awal: null, kesehatan: 100, terakhirSiram: null, beruntun: 0, rekor: 0, totalSiram: 0, tahap: {}, intro: false, lencana: [], pertama: null, kunjungan: 0 });
+      function load() {
+        if (mem) return mem;
+        let d = null;
+        try { const r = localStorage.getItem(KEY); if (r) d = JSON.parse(r); } catch (e) { d = null; }
+        if (!d || typeof d !== 'object' || d.v !== 1) d = baru();
+        mem = d; return mem;
+      }
+      function save() { try { localStorage.setItem(KEY, JSON.stringify(load())); } catch (e) { } }
+      return { load, save };
+    })();
+
+    // ---- tamanManager ----
+    const tamanManager = (() => {
+      const C = () => CONFIG.taman;
+      let tamanAsal = 'lock';
+      let tickT = null, animTs = [], introSelesai = false;
+      let siramGuard = false;
+      let visInit = false;
+
+      // Pasang visibilitychange sekali saat init
+      function initVisibility() {
+        if (visInit) return; visInit = true;
+        document.addEventListener('visibilitychange', () => { if (!document.hidden && cur === 'taman') tick(); });
+      }
+
+      function tick() {
+        if (cur !== 'taman') return;
+        const st = tamanStore.load();
+        const nBulan = tmBulanSelesai(hariIni());
+        const nBaru = nBulan - (st.awal || 0);
+        if (nBaru > 0) {
+          renderKebun();
+          renderStatus();
+        } else {
+          // Perbarui hanya status siram jika hari berganti
+          renderStatus();
+        }
+      }
+
+      // ---- hitung beruntun efektif ----
+      function hitungBeruntun(st) {
+        if (!st.terakhirSiram) return 0;
+        const h = hariIni();
+        const sel = Math.max(0, selisihHari(st.terakhirSiram, h));
+        if (sel >= 2) return 0;
+        if (sel < 0) return st.beruntun; // jam mundur
+        return st.beruntun;
+      }
+
+      function sudahSiramHariIni(st) {
+        if (!st.terakhirSiram) return false;
+        return st.terakhirSiram >= hariIni();
+      }
+
+      // ---- render status chips ----
+      function renderStatus() {
+        const st = tamanStore.load();
+        const nBulan = tmBulanSelesai(hariIni());
+        const T = C().teksUI;
+        $("#tmChipBunga").textContent = '🌻 ' + tmFill(T.chipBunga, { n: nBulan });
+        const brEfektif = hitungBeruntun(st);
+        const h = st.terakhirSiram ? Math.max(0, selisihHari(st.terakhirSiram, hariIni())) : 999;
+        if (h >= 2) {
+          $("#tmChipBeruntun").textContent = '🔥 ' + T.chipBeruntunMulai;
+        } else {
+          $("#tmChipBeruntun").textContent = '🔥 ' + tmFill(T.chipBeruntun, { n: brEfektif });
+        }
+        const sdh = sudahSiramHariIni(st);
+        $("#tmChipSiram").textContent = '💧 ' + (sdh ? T.chipSudah : T.chipBelum);
+        // tombol siram
+        const btn = $("#tmBtnSiram");
+        if (sdh) {
+          btn.textContent = T.sudahSiramLabel;
+          btn.setAttribute('aria-label', T.sudahSiramLabel);
+          $("#tmAjakBesok").textContent = T.ajakBesok;
+          $("#tmAjakBesok").classList.remove('hidden');
+          // tampilkan kata hari ini jika sudah pernah siram
+          tampilKataHariIni();
+        } else {
+          btn.textContent = T.siram;
+          btn.setAttribute('aria-label', T.siram);
+          $("#tmAjakBesok").classList.add('hidden');
+        }
+      }
+
+      // ---- render spanduk kondisi ----
+      function renderSpanduk(state) {
+        const Sp = C().spanduk;
+        const h = hariIni();
+        const t = parseYMD(h);
+        const mu = parseYMD(C().mulai);
+        const nBulan = tmBulanSelesai(h);
+        const isEmas = nBulan > 0 && nBulan % 12 === 0;
+        const sdh = sudahSiramHariIni(state);
+        const hari = state.terakhirSiram ? Math.max(0, selisihHari(state.terakhirSiram, h)) : 999;
+
+        let txt = '';
+        if (t.d === mu.d && nBulan > 0) {
+          if (isEmas) txt = tmFill(Sp.emas, { tahunKe: Math.floor(nBulan / 12) });
+          else txt = Sp.tanggal3;
+        } else if (hari >= 3 && !sdh) {
+          txt = Sp.balik;
+        }
+        const spEl = $("#tmSpanduk");
+        if (txt) { spEl.textContent = txt; spEl.classList.remove('hidden'); }
+        else spEl.classList.add('hidden');
+      }
+
+      // ---- render kebun ----
+      function renderKebun() {
+        const st = tamanStore.load();
+        const h = hariIni();
+        const nBulan = tmBulanSelesai(h);
+        const k = tmHitungKesehatan(st);
+        const ting = tmTingkat(k);
+        const grid = $("#tmKebun"); grid.innerHTML = '';
+
+        for (let N = 1; N <= nBulan; N++) {
+          const tahap = N <= (st.awal || 0) ? 3 : (st.tahap[N] ?? 0);
+          const J = N % 12 === 0 && N > 0 ? C().jenisEmas : C().jenis[(N - 1) % 12];
+          const T = C().teksUI;
+          const tahapNama = T.tahap[tahap] || 'benih';
+          const tingkatNama = T.tingkat[ting] || ting;
+          const tgl = fmtTanggal(tmTanggalBulan(N));
+          const jenisNama = N % 12 === 0 && N > 0 ? C().jenisEmas.nama : C().jenis[(N - 1) % 12].nama;
+          const ariaLbl = tmFill(T.ariaBunga, { n: N, jenis: jenisNama, tahap: tahapNama, tingkat: tingkatNama, tanggal: tgl });
+
+          const btn = document.createElement('button');
+          btn.className = 'tm-petak';
+          btn.setAttribute('aria-label', ariaLbl);
+          btn.dataset.n = N;
+          btn.innerHTML = spriteBunga(N, tahap, ting, N);
+          btn.addEventListener('click', () => ketukBunga(N, btn));
+          grid.appendChild(btn);
+        }
+
+        // Petak kosong (bulan berikutnya)
+        const tglBerikut = fmtTanggal(tmTanggalBulan(nBulan + 1));
+        const kosong = document.createElement('div');
+        kosong.className = 'tm-petak-kosong';
+        kosong.textContent = tmFill(C().teksUI.petakKosong, { tanggal: tglBerikut });
+        kosong.setAttribute('aria-label', tmFill(C().teksUI.petakKosong, { tanggal: tglBerikut }));
+        grid.appendChild(kosong);
+      }
+
+      // ---- ketuk bunga ----
+      function ketukBunga(N, btn) {
+        sfx.tap();
+        const st = tamanStore.load();
+        const ting = tmTingkat(tmHitungKesehatan(st));
+        const T = C().teksUI;
+        const isEmas = N % 12 === 0;
+        const jenisNama = isEmas ? C().jenisEmas.nama : C().jenis[(N - 1) % 12].nama;
+        const tgl = fmtTanggal(tmTanggalBulan(N));
+        const tahap = N <= (st.awal || 0) ? 3 : (st.tahap[N] ?? 0);
+        const tahapNama = T.tahap[tahap];
+        const tingkatNama = T.tingkat[ting];
+        const deskTing = T.deskTingkat[ting];
+        const cap = C().kenangan[N] || C().captionUmum[(N - 1) % C().captionUmum.length];
+        const capFilled = tmFill(cap, { n: N });
+        $("#tmInfo").innerHTML =
+          `<b>${tmFill(T.infoBunga, { n: N, jenis: jenisNama, tanggal: tgl })}</b><br>` +
+          `<span class="text-yl">${tahapNama}, ${tingkatNama}</span> — ${deskTing}<br>` +
+          `<span class="opacity-80">${capFilled}</span>`;
+        $$('.tm-petak.dipilih').forEach(b => b.classList.remove('dipilih'));
+        btn.classList.add('dipilih');
+        if (!ampRM()) {
+          btn.classList.add('tm-bounce');
+          btn.addEventListener('animationend', () => btn.classList.remove('tm-bounce'), { once: true });
+        }
+      }
+
+      // ---- kata hari ini ----
+      function tampilKataHariIni() {
+        const kt = C().kataHarian;
+        if (!kt || !kt.length) return;
+        const idx = selisihHari(C().mulai, hariIni()) % kt.length;
+        $("#tmKataJudul").textContent = C().teksUI.kataHariIni;
+        $("#tmKataTeks").textContent = kt[Math.abs(idx) % kt.length];
+        $("#tmKataWrap").classList.remove('hidden');
+      }
+
+      // ---- lencana ----
+      function renderLencana(st) {
+        const lencana = st.lencana || [];
+        if (!lencana.length) return;
+        const T = C().teksUI;
+        $("#tmLencanaJudul").textContent = T.lencanaJudul;
+        $("#tmLencanaList").innerHTML = '';
+        lencana.forEach(hari => {
+          const lc = C().lencana.find(l => l.hari === hari);
+          if (!lc) return;
+          const el = document.createElement('span');
+          el.className = 'tm-lencana';
+          el.title = lc.pesan;
+          el.textContent = '🏅 ' + lc.judul;
+          $("#tmLencanaList").appendChild(el);
+        });
+        $("#tmLencanaWrap").classList.remove('hidden');
+      }
+
+      // ---- animasi menyiram ----
+      function animasiSiram(cb) {
+        const isRM = ampRM();
+        if (isRM) { cb(); return; }
+        const wrap = $("#tmKebunWrap");
+        // Ember pixel
+        const ember = document.createElement('div');
+        ember.className = 'tm-ember pix';
+        ember.style.cssText = 'top:4px;left:50%;transform:translateX(-50%);font-size:28px;transition:transform 0.5s,left 0.5s;';
+        ember.textContent = '🪣';
+        wrap.appendChild(ember);
+        const t1 = setTimeout(() => { ember.style.transform = 'translateX(-50%) rotate(-45deg)'; }, 200);
+        animTs.push(t1);
+        // Tetes air
+        for (let i = 0; i < Math.min(24, 12); i++) {
+          const t = setTimeout(() => {
+            const d = document.createElement('div');
+            d.className = 'tm-tetes';
+            d.style.left = (15 + Math.random() * 70) + '%';
+            d.style.top = '30px';
+            d.style.animationDuration = (0.4 + Math.random() * 0.5) + 's';
+            wrap.appendChild(d);
+            d.addEventListener('animationend', () => d.remove(), { once: true });
+            beep(600 + Math.floor(Math.random() * 400), 0.06, 'triangle', 0.02);
+          }, i * 80);
+          animTs.push(t);
+        }
+        // 6 nada hujan
+        [660, 740, 820, 780, 700, 660].forEach((f, i) => { animTs.push(setTimeout(() => beep(f, 0.08, 'triangle', 0.03), 150 + i * 100)); });
+        const t2 = setTimeout(() => {
+          if (ember.parentNode) ember.remove();
+          cb();
+        }, 2200);
+        animTs.push(t2);
+      }
+
+      // ---- muncul kupu-kupu ----
+      function munculKupu() {
+        if (ampRM()) return;
+        const wrap = $("#tmKebunWrap");
+        const kupu = document.createElement('div');
+        kupu.className = 'tm-kupu';
+        kupu.innerHTML = spriteKupu();
+        kupu.title = C().kupu[Math.floor(Math.random() * C().kupu.length)];
+        kupu.addEventListener('click', () => toast(C().kupu[Math.floor(Math.random() * C().kupu.length)]));
+        wrap.appendChild(kupu);
+        kupu.addEventListener('animationend', () => kupu.remove(), { once: true });
+        const t = setTimeout(() => { if (kupu.parentNode) kupu.remove(); }, 9000);
+        animTs.push(t);
+      }
+
+      // ---- menyiram ----
+      function siram() {
+        if (siramGuard) return;
+        const st = tamanStore.load();
+        const h = hariIni();
+        if (sudahSiramHariIni(st)) {
+          toast(C().teksUI.sudahSiram);
+          return;
+        }
+        siramGuard = true;
+        const kSebelum = tmHitungKesehatan(st);
+        const pulih = kSebelum < 55;
+
+        // Update beruntun
+        const sel = st.terakhirSiram ? Math.max(0, selisihHari(st.terakhirSiram, h)) : 999;
+        if (!st.terakhirSiram || sel >= 2) st.beruntun = 1;
+        else st.beruntun = (st.beruntun || 0) + 1;
+        st.rekor = Math.max(st.rekor || 0, st.beruntun);
+        st.totalSiram = (st.totalSiram || 0) + 1;
+        st.kesehatan = Math.min(100, kSebelum + C().naikSiram);
+        st.terakhirSiram = h;
+
+        // Majukan tahap bunga baru
+        const nBulan = tmBulanSelesai(h);
+        const mekarBulan = [];
+        for (let N = (st.awal || 0) + 1; N <= nBulan; N++) {
+          const t = st.tahap[N] ?? 0;
+          if (t < 3) {
+            st.tahap[N] = t + 1;
+            if (st.tahap[N] === 3) mekarBulan.push(N);
+          }
+        }
+
+        // Cek lencana
+        const lencanaBaru = [];
+        C().lencana.forEach(l => {
+          if (st.beruntun >= l.hari && !(st.lencana || []).includes(l.hari)) {
+            st.lencana = st.lencana || [];
+            st.lencana.push(l.hari);
+            lencanaBaru.push(l);
+          }
+        });
+
+        tamanStore.save();
+        emit('taman:siram', { beruntun: st.beruntun, hari: sel });
+        if (pulih) emit('taman:pulih', {});
+        mekarBulan.forEach(N => emit('taman:mekar', { bulanKe: N }));
+        lencanaBaru.forEach(l => emit('taman:lencana', { hari: l.hari }));
+
+        animasiSiram(() => {
+          siramGuard = false;
+          renderKebun();
+          renderStatus();
+          // Bounce bunga yang naik tahap
+          if (!ampRM()) {
+            mekarBulan.forEach(N => {
+              const btn = $("#tmKebun .tm-petak[data-n='" + N + "']");
+              if (btn) { btn.classList.add('tm-mekar'); btn.addEventListener('animationend', () => btn.classList.remove('tm-mekar'), { once: true }); }
+              [523, 659, 784, 1047].forEach((f, i) => beep(f, 0.14, 'square', 0.04, i * 0.1));
+            });
+          }
+          munculKupu();
+          // Spanduk pulih
+          if (pulih) { const sp = $("#tmSpanduk"); sp.textContent = C().spanduk.pulih; sp.classList.remove('hidden'); }
+          // Spanduk mekar
+          mekarBulan.forEach(N => toast(tmFill(C().spanduk.mekar, { n: N })));
+          // Lencana baru
+          lencanaBaru.forEach(l => { confetti(40); toast('🏅 ' + l.judul + ': ' + l.pesan, 4000); });
+          renderLencana(tamanStore.load());
+          tampilKataHariIni();
+          if (typeof maskot !== 'undefined') {
+            if (mekarBulan.length) maskot.say(C().maskot.mekar[0], { ms: 3000 });
+            else if (lencanaBaru.length) maskot.say(C().maskot.lencana[0], { ms: 3000 });
+            else maskot.say(C().maskot.sudahSiram[0], { ms: 3000 });
+          }
+        });
+      }
+
+      // ---- intro kunjungan pertama ----
+      function jalankanIntro(nBulan) {
+        const isRM = ampRM();
+        const grid = $("#tmKebun"); grid.innerHTML = '';
+        const teks = tmFill(C().intro.teks, { n: nBulan });
+        $("#tmInfo").textContent = teks;
+        emit('taman:intro', { n: nBulan });
+        if (isRM) { renderKebun(); introSelesai = true; return; }
+        // Munculkan bunga satu per satu
+        const jedaMs = Math.min(3500 / Math.max(1, nBulan), 400);
+        const st = tamanStore.load();
+        const ting = tmTingkat(100);
+        // Buat semua petak dulu tersembunyi
+        for (let N = 1; N <= nBulan; N++) {
+          const btn = document.createElement('button');
+          btn.className = 'tm-petak';
+          btn.dataset.n = N;
+          btn.style.opacity = '0';
+          btn.style.transition = 'opacity 0.15s';
+          const t = st.tahap ? (N <= (st.awal || 0) ? 3 : (st.tahap[N] ?? 0)) : 3;
+          btn.innerHTML = spriteBunga(N, t, ting, N);
+          btn.addEventListener('click', () => ketukBunga(N, btn));
+          grid.appendChild(btn);
+          const tN = setTimeout(() => {
+            btn.style.opacity = '1';
+            if (N <= 8) beep(300 + Math.min(N, 8) * 50, 0.06, 'square', 0.02);
+          }, N * jedaMs);
+          animTs.push(tN);
+        }
+        const tEnd = setTimeout(() => {
+          introSelesai = true;
+          renderKebun(); // re-render dengan petak kosong
+          $("#tmInfo").textContent = '';
+        }, nBulan * jedaMs + 300);
+        animTs.push(tEnd);
+        // Ketuk mana saja untuk lewati intro
+        const lewati = () => {
+          animTs.forEach(clearTimeout); animTs = [];
+          introSelesai = true;
+          renderKebun();
+          $("#tmInfo").textContent = '';
+          document.removeEventListener('pointerdown', lewati);
+        };
+        document.addEventListener('pointerdown', lewati, { once: true });
+      }
+
+      // ---- langit sesuai jam ----
+      function aturLangit() {
+        const jamParam = uParams.get('jam');
+        const jam = jamParam !== null ? parseInt(jamParam, 10) : new Date().getHours();
+        const peta = C().langitJam;
+        let tahapId = 'malamIndah'; // default
+        for (let i = 0; i < peta.length; i++) {
+          if (jam >= peta[i][0] && (i + 1 >= peta.length || jam < peta[i + 1][0])) {
+            tahapId = peta[i][1]; break;
+          }
+        }
+        // Hanya gunakan tahap yang ada di CONFIG.langit.tahap
+        if (CONFIG.langit && CONFIG.langit.tahap && CONFIG.langit.tahap[tahapId]) {
+          sky.setStage(tahapId);
+        }
+      }
+
+      // ---- masuk layar taman ----
+      function masuk(asal) {
+        tamanAsal = asal || 'lock';
+        const st = tamanStore.load();
+        const h = hariIni();
+        const nBulan = tmBulanSelesai(h);
+        const T = C().teksUI;
+
+        // Atur teks statis
+        $("#tmJudul").textContent = C().judul;
+        $("#tmSub").textContent = C().subjudul;
+        $("#tmBtnKembali").textContent = T.kembali;
+        $("#tmBtnSiram").textContent = T.siram;
+
+        // Tombol amplop (jika ada)
+        const btnAmplop = $("#tmBtnAmplop");
+        if (typeof amplopManager !== 'undefined' && btnAmplop) {
+          btnAmplop.textContent = T.keAmplop;
+          btnAmplop.classList.remove('hidden');
+        }
+
+        // Kunjungan
+        st.kunjungan = (st.kunjungan || 0) + 1;
+        tamanStore.save();
+
+        // Pertama kali
+        if (!st.intro) {
+          st.awal = nBulan;
+          st.intro = true;
+          st.pertama = h;
+          tamanStore.save();
+          go('taman');
+          aturLangit();
+          renderStatus();
+          renderSpanduk(st);
+          renderLencana(st);
+          jalankanIntro(nBulan);
+          if (typeof maskot !== 'undefined') setTimeout(() => maskot.say(C().maskot.masuk[0], { ms: 4000 }), 600);
+        } else {
+          // Tambah bunga baru bila ada
+          const nBaru = nBulan - (st.awal || 0);
+          if (nBaru > 0) {
+            // bunga baru sudah mulai di tahap 0 secara default (tahap[N] = 0)
+          }
+          go('taman');
+          aturLangit();
+          renderKebun();
+          renderStatus();
+          renderSpanduk(st);
+          renderLencana(st);
+          if (typeof maskot !== 'undefined') {
+            const hari = st.terakhirSiram ? Math.max(0, selisihHari(st.terakhirSiram, h)) : 999;
+            const arr = hari >= 3 ? C().maskot.balik : (sudahSiramHariIni(st) ? C().maskot.sudahSiram : C().maskot.masuk);
+            setTimeout(() => maskot.say(arr[Math.floor(Math.random() * arr.length)], { ms: 4000 }), 600);
+          }
+          if (sudahSiramHariIni(st)) tampilKataHariIni();
+        }
+
+        clearInterval(tickT);
+        tickT = setInterval(tick, 60000);
+      }
+
+      // ---- cleanup ----
+      function cleanup() {
+        clearInterval(tickT); tickT = null;
+        animTs.forEach(clearTimeout); animTs = [];
+        siramGuard = false;
+        // Hapus elemen animasi
+        if ($("#tmKebunWrap")) {
+          $$("#tmKebunWrap .tm-tetes").forEach(e => e.remove());
+          $$("#tmKebunWrap .tm-kupu").forEach(e => e.remove());
+          $$("#tmKebunWrap .tm-ember").forEach(e => e.remove());
+        }
+      }
+
+      // ---- init sekali ----
+      function init() {
+        if (!C().aktif) { const k = $("#tmKartuFinale"); if (k) k.classList.add("hidden"); return; }
+        initVisibility();
+
+        // Kartu finale
+        const kf = $("#tmKartuFinale"); if (kf) kf.classList.remove("hidden");
+        const kj = $("#tmKartuJudul"); if (kj) kj.textContent = '▸ ' + C().kartuFinale.judul;
+        const kt = $("#tmKartuTeks"); if (kt) kt.textContent = C().kartuFinale.teks;
+        const bf = $("#tmBtnFinale"); if (bf) { bf.textContent = C().tombolFinale; bf.addEventListener("click", () => { sfx.tap(); masuk('fin'); }); }
+
+        // Tombol lock
+        const bl = $("#btnLockTaman");
+        if (bl) { bl.textContent = C().tombolLock; bl.addEventListener("click", () => { sfx.tap(); masuk('lock'); }); }
+
+        // Tombol siram
+        $("#tmBtnSiram").addEventListener("click", () => siram());
+
+        // Tombol kembali
+        $("#tmBtnKembali").addEventListener("click", () => {
+          sfx.tap();
+          if (tamanAsal === 'fin') kembaliKeFin('#tmKartuFinale');
+          else if (tamanAsal === 'amplop') go('amplop');
+          else go('lock');
+        });
+
+        // Tombol amplop di taman
+        const ba = $("#tmBtnAmplop");
+        if (ba) ba.addEventListener("click", () => { sfx.tap(); go('amplop'); });
+
+        // Event maskot
+        on('taman:mekar', ({ bulanKe }) => {
+          if (cur === 'taman' && typeof maskot !== 'undefined') maskot.say(C().maskot.mekar[0], { ms: 3000 });
+        });
+        on('taman:lencana', () => {
+          if (cur === 'taman' && typeof maskot !== 'undefined') maskot.say(C().maskot.lencana[0], { ms: 3000 });
+        });
+
+        // Tampilkan tombol lock bila selesai misi
+        on('screen:enter', ({ id }) => {
+          if (id === 'lock') {
+            // tampilTombolLock sudah handle lockPintas
+          }
+        });
+        on('finale:start', () => {
+          if (bl) {
+            const sdh = sudahSiramHariIni(tamanStore.load());
+            bl.textContent = C().tombolLock + (sdh ? '' : C().penandaBelumSiram);
+          }
+        });
+      }
+
+      init();
+      return { masuk, cleanup };
+    })();
+    inits.taman = () => { }; // masuk() dipanggil manual, bukan lewat go()
+
+    // Update tampilTombolLock untuk penanda 💧
+    on('screen:enter', ({ id }) => {
+      if (id === 'lock' && CONFIG.taman && CONFIG.taman.aktif) {
+        const bl = $("#btnLockTaman");
+        if (bl && ampStore.selesai()) {
+          const sdh = sudahSiramHariIni ? sudahSiramHariIni(tamanStore.load()) : false;
+          bl.textContent = CONFIG.taman.tombolLock + (sdh ? '' : CONFIG.taman.penandaBelumSiram);
+        }
+      }
+    });
+
     $$("[data-bind]").forEach(el => { const keys = el.dataset.bind.split('.'); let val = CONFIG; keys.forEach(k => val = val[k]); el.textContent = val; });
     $("#hintKode").textContent = CONFIG.petunjukKode;
 
     const uLompat = uParams.get('lompat');
-    if (uLompat && (order.includes(uLompat) || uLompat === 'amplop')) { setTimeout(() => go(uLompat), 100); }
+    if (uLompat && (order.includes(uLompat) || LAYAR_LUAR.includes(uLompat))) {
+      setTimeout(() => {
+        if (uLompat === 'taman' && typeof tamanManager !== 'undefined') tamanManager.masuk('lock');
+        else go(uLompat);
+      }, 100);
+    }
 
     function tryPlayBgm() { if (bgm.paused && cur !== "lock") { bgm.play().catch(() => { }); } }
     document.addEventListener("click", tryPlayBgm, { once: false }); document.addEventListener("touchstart", tryPlayBgm, { once: false });
