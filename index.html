@@ -1459,6 +1459,207 @@
         transition-duration: .01s;
       }
     }
+
+    /* ===== DINDING BANGGA ===== */
+    #dbDinding {
+      background:
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, .22) 0px, rgba(0, 0, 0, .22) 2px, transparent 2px, transparent 20px),
+        repeating-linear-gradient(90deg, rgba(255, 244, 224, .04) 0px, rgba(255, 244, 224, .04) 1px, transparent 1px, transparent 60px),
+        #3b2a5c;
+      border: 4px solid #000;
+      box-shadow: 6px 6px 0 #000;
+      padding: 10px 6px 6px;
+    }
+
+    .db-rak-baris {
+      position: relative;
+      padding-bottom: 10px;
+      margin-bottom: 2px;
+    }
+
+    .db-rak-baris::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -6px;
+      right: -6px;
+      height: 8px;
+      background: repeating-linear-gradient(90deg, #5a3e1b 0px, #7a5530 6px, #4a3018 12px);
+      border-top: 2px solid #000;
+      box-shadow: 0 3px 0 rgba(0, 0, 0, .5);
+    }
+
+    .db-medali-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .db-paku {
+      width: 6px;
+      height: 8px;
+      background: #c0a060;
+      border: 1px solid #000;
+      border-radius: 1px 1px 0 0;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .db-paku::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 4px;
+      background: #a08040;
+    }
+
+    .db-btn-medali {
+      background: none;
+      border: 3px solid transparent;
+      cursor: pointer;
+      touch-action: manipulation;
+      user-select: none;
+      padding: 2px;
+      position: relative;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .db-btn-medali:focus-visible {
+      outline: 3px solid var(--yl);
+      outline-offset: 2px;
+    }
+
+    .db-btn-medali.db-aktif {
+      border-color: var(--yl);
+      box-shadow: 0 0 0 2px var(--yl);
+    }
+
+    .db-label-medali {
+      font-family: 'VT323', monospace;
+      font-size: 18px;
+      line-height: 1.1;
+      text-align: center;
+      color: var(--cr);
+      text-shadow: 1px 1px 0 #000;
+      max-width: 80px;
+      word-break: break-word;
+      hyphens: auto;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .db-centang {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--mt);
+      color: #000;
+      font-size: 11px;
+      font-family: 'Press Start 2P', monospace;
+      line-height: 1;
+      padding: 2px 3px;
+      border: 2px solid #000;
+      z-index: 2;
+    }
+
+    .db-kilau {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 14px;
+      animation: dbKilau 1.2s steps(2) infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @keyframes dbKilau {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .db-ayun {
+      animation: dbAyun 3s ease-in-out infinite;
+      transform-origin: top center;
+    }
+
+    .db-ayun:nth-child(3n+1) {
+      animation-delay: 0s;
+    }
+
+    .db-ayun:nth-child(3n+2) {
+      animation-delay: .7s;
+    }
+
+    .db-ayun:nth-child(3n) {
+      animation-delay: 1.4s;
+    }
+
+    @keyframes dbAyun {
+
+      0%,
+      100% {
+        transform: rotate(-2deg);
+      }
+
+      50% {
+        transform: rotate(2deg);
+      }
+    }
+
+    #dbDetail {
+      border: 4px solid var(--cr);
+      background: var(--cr);
+      color: var(--ink);
+      box-shadow: 6px 6px 0 #000;
+      padding: 16px;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    #dbPiala {
+      border: 4px solid var(--yl);
+      background: #241447;
+      box-shadow: 6px 6px 0 #000;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .db-chip-kategori {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      padding: 3px 6px;
+      border: 2px solid #000;
+      display: inline-block;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .db-ayun {
+        animation: none;
+      }
+
+      .db-kilau {
+        animation: none;
+        opacity: 0.7;
+      }
+    }
   </style>
 </head>
 
@@ -2007,6 +2208,50 @@
             </div>
           </div>
           <button class="btn btn-pr !text-[10px] !p-2 mt-4 hidden mx-auto" id="btnKueAuto">RETAKKAN OTOMATIS</button>
+        </div>
+
+        <!-- ====== DINDING BANGGA ====== -->
+        <div id="dbSeksi">
+          <h3 class="pix text-xs text-mt mt-10 mb-1 chip" id="dbJudul">▸ DINDING BANGGA</h3>
+          <p class="text-xl leading-tight mb-3 opacity-90" id="dbSub"></p>
+          <div class="flex flex-wrap gap-2 items-center mb-3">
+            <span class="chip pix text-[9px]" id="dbPeriode"></span>
+            <span class="chip pix text-[9px] text-yl" id="dbPenghitung" aria-live="polite" aria-atomic="true"></span>
+          </div>
+          <!-- Dinding -->
+          <div id="dbDinding" role="group" aria-label="" class="mb-4">
+            <!-- Diisi JS -->
+          </div>
+          <!-- Panel Rincian -->
+          <div id="dbDetail" class="hidden mb-4" role="region" aria-label="Rincian medali">
+            <div class="sr-only" id="dbSr" aria-live="polite"></div>
+            <div class="flex gap-3 items-start mb-3">
+              <div id="dbDetailIko" aria-hidden="true" class="shrink-0"></div>
+              <div class="flex-1">
+                <span class="db-chip-kategori" id="dbDetailKat" style=""></span>
+                <h4 class="font-bold pix text-[11px] leading-snug mt-1" id="dbDetailJudul"></h4>
+              </div>
+            </div>
+            <div id="dbDetailTeks" aria-hidden="true" class="leading-snug mb-2"></div>
+            <div id="dbDetailKisahWrap" class="hidden mt-2">
+              <div class="pix text-[8px] opacity-70 mb-1" id="dbDetailKisahLbl"></div>
+              <div id="dbDetailKisah" class="leading-snug italic opacity-90"></div>
+            </div>
+            <div class="text-right mt-2 opacity-70 text-lg" id="dbDetailTtd"></div>
+            <div class="flex justify-between items-center mt-3 flex-wrap gap-2">
+              <div class="pix text-[8px] opacity-60" id="dbDetailNomor"></div>
+              <div class="flex gap-2 flex-wrap">
+                <button type="button" class="btn !text-[9px] !p-2" id="dbBtnSeb"></button>
+                <button type="button" class="btn !text-[9px] !p-2" id="dbBtnBer"></button>
+                <button type="button" class="btn btn-pr !text-[9px] !p-2" id="dbBtnTutup"></button>
+              </div>
+            </div>
+          </div>
+          <!-- Piala Utama -->
+          <div id="dbPiala" class="mt-4">
+            <div id="dbPialaSvg" class="flex justify-center mb-2" aria-hidden="true"></div>
+            <div id="dbPialaTeks" class="text-xl leading-tight"></div>
+          </div>
         </div>
 
         <div id="ampKartu">
@@ -2574,6 +2819,89 @@
           mekar: ["Wah, ada yang mekar!"],
           lencana: ["Lencana baru! Hebat!"]
         }
+      },
+
+      /* ================= FITUR: DINDING BANGGA ================= */
+      dindingBangga: {
+        aktif: true,
+        judul: "DINDING BANGGA",
+        subjudul: "Hal-hal yang Arkan bangga dari kamu setahun ini. Ketuk tiap medali.",
+        periode: "26 OKT 2025 – 26 OKT 2026",
+        kategori: {
+          usaha: { label: "USAHA", disc: "#ffd93d", pita1: "#ff6fae", pita2: "#b79ced" },
+          berani: { label: "KEBERANIAN", disc: "#ff7b54", pita1: "#ffd93d", pita2: "#fff4e0" },
+          hati: { label: "SIFAT BAIK", disc: "#ff6fae", pita1: "#6ee7b7", pita2: "#b79ced" },
+          kecil: { label: "KECIL TAPI BERARTI", disc: "#6ee7b7", pita1: "#ffd93d", pita2: "#ff6fae" }
+        },
+        medali: [
+          {
+            id: "kuliah", kategori: "usaha", ikon: "📚", judul: "Pejuang Kuliah",
+            teks: "Arkan lihat kamu belajar, begadang, dan tetap lanjut walau capek. Nggak semua orang sanggup menjalani proses kayak kamu. Arkan bangga sama setiap usaha, termasuk yang nggak kelihatan orang lain.",
+            kisah: ""
+          },
+          {
+            id: "mencoba", kategori: "berani", ikon: "🚀", judul: "Berani Mencoba",
+            teks: "Kamu berani mencoba hal baru walau takut salah. Keberanian itu bukan nggak takut, tapi tetap melangkah. Arkan bangga lihat kamu melangkah, dan Arkan ada di sisimu tiap langkahnya.",
+            kisah: ""
+          },
+          {
+            id: "hatibaik", kategori: "hati", ikon: "💗", judul: "Hati yang Baik",
+            teks: "Cara kamu peduli sama orang lain, bahkan di hari kamu sendiri lagi capek. Arkan perhatiin, dan itu salah satu hal yang paling Arkan kagumi dari kamu.",
+            kisah: ""
+          },
+          {
+            id: "bangkit", kategori: "berani", ikon: "🌱", judul: "Bangkit Lagi",
+            teks: "Waktu hari lagi berat, kamu tetap bangkit pelan-pelan. Nggak harus cepat. Arkan bangga kamu nggak menyerah, dan Arkan mau jadi orang yang bikin bangkitnya terasa lebih ringan.",
+            kisah: ""
+          },
+          {
+            id: "konsisten", kategori: "usaha", ikon: "⭐", judul: "Rajin dan Konsisten",
+            teks: "Kamu konsisten mengerjakan hal yang penting buat kamu, bahkan saat nggak ada yang menyuruh. Arkan lihat, dan Arkan salut.",
+            kisah: ""
+          },
+          {
+            id: "sabar", kategori: "hati", ikon: "🕊️", judul: "Sabar dan Tenang",
+            teks: "Kamu sabar menghadapi banyak hal. Arkan kagum, dan Arkan mau jadi orang yang bikin kamu nggak perlu sabar sendirian.",
+            kisah: ""
+          },
+          {
+            id: "halkecil", kategori: "kecil", ikon: "🌼", judul: "Ingat Hal Kecil",
+            teks: "Kamu sering ingat hal-hal kecil, dan itu bikin orang di sekitarmu merasa dianggap. Arkan merasakannya, dan Arkan senang diperhatikan sama kamu.",
+            kisah: ""
+          },
+          {
+            id: "tawa", kategori: "kecil", ikon: "😆", judul: "Tawa yang Menular",
+            teks: "Tawa kamu bikin suasana jadi ringan. Arkan senang bisa jadi alasan kamu ketawa, dan Arkan bakal terus cari cara bikin kamu ketawa.",
+            kisah: ""
+          },
+          {
+            id: "apaadanya", kategori: "hati", ikon: "👑", judul: "Jadi Diri Sendiri",
+            teks: "Kamu apa adanya sudah cukup. Arkan bangga kamu berani jadi diri sendiri, di depan siapa pun.",
+            kisah: ""
+          }
+        ],
+        piala: {
+          judul: "PIALA UTAMA: Zahwa Davina",
+          pesan: "Medali-medali ini kelihatan kecil kalau dihitung satu per satu. Tapi kalau dijumlahkan, itu kamu. Arkan bangga banget sama kamu yang sekarang, dan Arkan nggak sabar lihat kamu yang akan datang. Selamat ulang tahun ke-21. Arkan selalu ada di barisan paling depan yang menyemangati kamu. 💗"
+        },
+        teksUI: {
+          penghitung: "{n}/{total} DILIHAT",
+          tutup: "TUTUP", sebelumnya: "◀ SEBELUMNYA", berikutnya: "BERIKUTNYA ▶",
+          nomor: "MEDALI {n} DARI {total}",
+          labelKisah: "YANG ARKAN INGAT",
+          ttd: "— Arkan",
+          pialaTerkunci: "Lihat semua medali untuk membuka piala ({n} lagi).",
+          pialaTerbuka: "PIALA TERBUKA! 🏆",
+          toastPiala: "Semua medali sudah dilihat. Piala utama terbuka! 🏆",
+          simpanPiala: "SIMPAN PIALA 📥",
+          dindingLabel: "Dinding medali kebanggaan",
+          ariaBelum: "belum dilihat", ariaSudah: "sudah dilihat",
+          ariaMedali: "Medali {judul}, kategori {kategori}, {status}"
+        },
+        maskot: {
+          lihat: ["Wah, medali yang bagus!", "Arkan beneran bangga lho.", "Baca pelan-pelan ya."],
+          piala: "Semua medali terbuka! Kamu hebat banget!"
+        }
       }
     };
 
@@ -2644,7 +2972,7 @@
     /* ====================== RESET LOKAL ====================== */
     const uParams = new URLSearchParams(window.location.search);
     if (uParams.get('reset') === '1') {
-      ['zahwadex_2610', 'biyyuna', 'kue-terbuka', 'dialog-ditampilkan', 'kontrak', 'amplop-2610', 'misi-selesai-2610', 'taman-2610'].forEach(k => { try { localStorage.removeItem(k); } catch (e) { } });
+      ['zahwadex_2610', 'biyyuna', 'kue-terbuka', 'dialog-ditampilkan', 'kontrak', 'amplop-2610', 'misi-selesai-2610', 'taman-2610', 'dinding-bangga-2610'].forEach(k => { try { localStorage.removeItem(k); } catch (e) { } });
     }
 
     /* ====================== NAVIGASI & CLEANUP ====================== */
@@ -2693,6 +3021,7 @@
       if (typeof pet !== 'undefined') pet.hidePanel();
       if (typeof amplopManager !== 'undefined') amplopManager.cleanup();
       if (typeof tamanManager !== 'undefined') tamanManager.cleanup();
+      if (typeof dindingBangga !== 'undefined') dindingBangga.cleanup();
       if (cur === "scan") { clearInterval(scanT); clearTimeout(scanHintT); }
     }
 
@@ -3663,6 +3992,422 @@
     }
     function stopPhotoParticles() { clearInterval(photoParticleTimer); photoParticleTimer = null; document.querySelectorAll('.photo-particle').forEach(el => el.remove()); }
 
+    /* ====================== FITUR: DINDING BANGGA ====================== */
+    function dbFill(s, vars) {
+      vars = vars || {};
+      return String(s).replace(/\{(\w+)\}/g, (_, k) => {
+        if (vars[k] != null) return vars[k];
+        return CONFIG[k] != null ? CONFIG[k] : '';
+      });
+    }
+
+    const dindingBangga = (() => {
+      const KEY = 'dinding-bangga-2610';
+      const C = () => CONFIG.dindingBangga;
+      const UI = () => C().teksUI;
+      let inited = false, dbTok = 0, pialaTipu = null, pialaDone = false;
+      let dbAnimTs = [];
+
+      // ---- Store ----
+      const dbStore = (() => {
+        let mem = null;
+        const baru = () => ({ v: 1, dilihat: [], piala: false, pertama: null });
+        function load() {
+          if (mem) return mem;
+          let d = null;
+          try { const r = localStorage.getItem(KEY); if (r) d = JSON.parse(r); } catch (e) { d = null; }
+          if (!d || typeof d !== 'object' || d.v !== 1 || !Array.isArray(d.dilihat)) d = baru();
+          mem = d; return mem;
+        }
+        function save() { try { localStorage.setItem(KEY, JSON.stringify(load())); } catch (e) { } }
+        return { load, save };
+      })();
+
+      // ---- Daftar medali tampil (P2: filter muncul di masa depan) ----
+      function daftarTampil() {
+        const today = hariIni ? hariIni() : new Date().toISOString().slice(0, 10);
+        return (C().medali || []).filter(m => !m.muncul || m.muncul <= today);
+      }
+
+      // ---- Sprite medali pixel (viewBox 16x20) ----
+      function spriteMedali(katKey, ukuran) {
+        const katList = C().kategori;
+        const kat = katList[katKey] || Object.values(katList)[0];
+        const disc = kat.disc, p1 = kat.pita1, p2 = kat.pita2;
+        const outline = '#000';
+        const lebar = [4, 6, 8, 10, 10, 10, 10, 10, 8, 6, 4];
+        const R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
+        let s = `<svg viewBox="0 0 16 20" width="${ukuran}" height="${Math.round(ukuran * 20 / 16)}" shape-rendering="crispEdges" aria-hidden="true" focusable="false">`;
+        // Pita
+        s += R(4, 0, 3, 7, p1) + R(9, 0, 3, 7, p2);
+        // Takik V
+        s += R(5, 6, 1, 1, outline) + R(6, 5, 1, 1, outline) + R(7, 4, 2, 1, p1) + R(9, 5, 1, 1, outline) + R(10, 6, 1, 1, outline);
+        // Outline cakram (y=7..19)
+        const startY = 7;
+        lebar.forEach((w, i) => {
+          const x = Math.round(8 - (w + 2) / 2);
+          s += R(x, startY + i, w + 2, 1, outline);
+        });
+        // Cakram berwarna
+        lebar.forEach((w, i) => {
+          const x = Math.round(8 - w / 2);
+          s += R(x, startY + 1 + i, w, 1, disc);
+        });
+        // Kilap
+        const cx = Math.round(8 - lebar[2] / 2);
+        s += R(cx + 1, startY + 2, 1, 1, '#fff') + R(cx + 2, startY + 3, 1, 1, '#fff');
+        s += '</svg>';
+        return s;
+      }
+
+      // ---- Sprite medali abu (terkunci/siluet) ----
+      function spriteMedaliAbu(ukuran) {
+        const R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
+        const lebar = [4, 6, 8, 10, 10, 10, 10, 10, 8, 6, 4];
+        let s = `<svg viewBox="0 0 16 20" width="${ukuran}" height="${Math.round(ukuran * 20 / 16)}" shape-rendering="crispEdges" aria-hidden="true" focusable="false">`;
+        s += R(4, 0, 3, 7, '#555') + R(9, 0, 3, 7, '#444');
+        const startY = 7;
+        lebar.forEach((w, i) => { const x = Math.round(8 - w / 2); s += R(x, startY + i, w, 1, '#333'); });
+        s += '</svg>';
+        return s;
+      }
+
+      // ---- Sprite piala pixel (viewBox 16x16) ----
+      function spritePiala(terbuka, ukuran) {
+        const R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
+        const emas = terbuka ? '#ffd93d' : '#555', gelap = terbuka ? '#b8860b' : '#333', dasar = terbuka ? '#8a5a36' : '#444';
+        let s = `<svg viewBox="0 0 16 16" width="${ukuran}" height="${ukuran}" shape-rendering="crispEdges" aria-hidden="true" focusable="false">`;
+        // Gagang kiri
+        s += R(1, 3, 2, 4, emas) + R(1, 6, 3, 1, gelap);
+        // Gagang kanan
+        s += R(13, 3, 2, 4, emas) + R(12, 6, 3, 1, gelap);
+        // Badan cangkir
+        s += R(3, 1, 10, 1, emas); // Atas
+        s += R(2, 2, 12, 1, emas);
+        s += R(2, 3, 12, 4, emas);
+        s += R(3, 7, 10, 1, emas);
+        s += R(4, 8, 8, 1, gelap);
+        // Kilap jika terbuka
+        if (terbuka) s += R(4, 2, 1, 1, '#fff') + R(5, 3, 1, 1, '#fff');
+        // Leher
+        s += R(6, 9, 4, 1, gelap);
+        // Dasar
+        s += R(4, 10, 8, 1, dasar) + R(3, 11, 10, 2, dasar) + R(2, 13, 12, 2, dasar);
+        s += '</svg>';
+        return s;
+      }
+
+      // ---- Render dinding ----
+      function render() {
+        const D = C(); if (!D.aktif) { const s = $('#dbSeksi'); if (s) s.classList.add('hidden'); return; }
+        const list = daftarTampil();
+        if (!list.length) { const s = $('#dbSeksi'); if (s) s.classList.add('hidden'); return; }
+
+        $('#dbSeksi').classList.remove('hidden');
+        $('#dbSub').textContent = D.subjudul;
+        $('#dbPeriode').textContent = D.periode;
+        $('#dbDinding').setAttribute('aria-label', UI().dindingLabel);
+        const UI2 = UI();
+        $('#dbBtnSeb').textContent = UI2.sebelumnya;
+        $('#dbBtnBer').textContent = UI2.berikutnya;
+        $('#dbBtnTutup').textContent = UI2.tutup;
+        if (list.length <= 1) {
+          $('#dbBtnSeb').classList.add('hidden');
+          $('#dbBtnBer').classList.add('hidden');
+        } else {
+          $('#dbBtnSeb').classList.remove('hidden');
+          $('#dbBtnBer').classList.remove('hidden');
+        }
+
+        renderDinding(list);
+        renderPiala();
+        renderPenghitung(list);
+      }
+
+      function renderDinding(list) {
+        const dinding = $('#dbDinding'); dinding.innerHTML = '';
+        const st = dbStore.load();
+        const isRM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        for (let i = 0; i < list.length; i += 3) {
+          const baris = document.createElement('div');
+          baris.className = 'db-rak-baris grid gap-1 mb-0';
+          baris.style.gridTemplateColumns = 'repeat(3, minmax(0, 1fr))';
+          const slice = list.slice(i, i + 3);
+          slice.forEach((m, localIdx) => {
+            const globalIdx = i + localIdx;
+            const sudah = st.dilihat.includes(m.id);
+            const kat = C().kategori[m.kategori] || Object.values(C().kategori)[0];
+            const ariaStatus = sudah ? UI().ariaSudah : UI().ariaBelum;
+            const ariaLbl = dbFill(UI().ariaMedali, { judul: m.judul, kategori: kat.label, status: ariaStatus });
+
+            const wrap = document.createElement('div');
+            wrap.className = 'db-medali-wrap';
+
+            const paku = document.createElement('div');
+            paku.className = 'db-paku'; paku.setAttribute('aria-hidden', 'true');
+            wrap.appendChild(paku);
+
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'db-btn-medali' + (isRM ? '' : ' db-ayun');
+            btn.dataset.id = m.id;
+            btn.dataset.idx = globalIdx;
+            btn.setAttribute('aria-label', ariaLbl);
+
+            // SVG medali
+            const medalSvg = document.createElement('div');
+            medalSvg.innerHTML = spriteMedali(m.kategori, 56);
+            btn.appendChild(medalSvg);
+
+            // Ikon emoji di tengah (tumpuk di atas svg)
+            const ikoEl = document.createElement('div');
+            ikoEl.style.cssText = 'position:absolute;top:calc(50% - 8px);left:50%;transform:translate(-50%,-50%);font-size:18px;pointer-events:none;';
+            ikoEl.setAttribute('aria-hidden', 'true');
+            ikoEl.textContent = m.ikon;
+            btn.appendChild(ikoEl);
+
+            // Label judul
+            const lbl = document.createElement('div');
+            lbl.className = 'db-label-medali mt-1';
+            lbl.textContent = m.judul;
+            btn.appendChild(lbl);
+
+            // Kilau (belum dilihat) atau centang (sudah)
+            if (sudah) {
+              const cent = document.createElement('div');
+              cent.className = 'db-centang'; cent.textContent = '✓';
+              cent.setAttribute('aria-hidden', 'true');
+              btn.appendChild(cent);
+            } else {
+              const kilau = document.createElement('div');
+              kilau.className = 'db-kilau'; kilau.textContent = '✨';
+              kilau.setAttribute('aria-hidden', 'true');
+              btn.appendChild(kilau);
+            }
+
+            btn.addEventListener('click', () => buka(m.id));
+            wrap.appendChild(btn);
+            baris.appendChild(wrap);
+          });
+          dinding.appendChild(baris);
+        }
+      }
+
+      function renderPenghitung(list) {
+        const st = dbStore.load();
+        const n = st.dilihat.filter(id => list.some(m => m.id === id)).length;
+        const total = list.length;
+        $('#dbPenghitung').textContent = dbFill(UI().penghitung, { n, total });
+      }
+
+      function renderPiala() {
+        const st = dbStore.load();
+        const list = daftarTampil();
+        const terbuka = st.piala;
+        const pialaSvg = $('#dbPialaSvg');
+        const pialaTeks = $('#dbPialaTeks');
+        const sisa = list.filter(m => !st.dilihat.includes(m.id)).length;
+
+        pialaSvg.innerHTML = spritePiala(terbuka, 64);
+        if (terbuka) {
+          pialaTeks.innerHTML =
+            `<div class="pix text-[10px] text-yl mb-2">${UI().pialaTerbuka}</div>` +
+            `<div class="pix text-[11px] leading-snug mb-2">${C().piala.judul}</div>` +
+            `<div class="text-xl leading-snug">${C().piala.pesan}</div>`;
+        } else {
+          pialaTeks.innerHTML =
+            `<div class="text-xl leading-snug opacity-70">${dbFill(UI().pialaTerkunci, { n: sisa })}</div>`;
+        }
+      }
+
+      // ---- Buka medali ----
+      function buka(id) {
+        const list = daftarTampil();
+        const idx = list.findIndex(m => m.id === id);
+        if (idx < 0) return;
+        const m = list[idx];
+        const st = dbStore.load();
+        const isRM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Tandai dilihat
+        const sudahDilihat = st.dilihat.includes(id);
+        if (!sudahDilihat) {
+          st.dilihat.push(id);
+          dbStore.save();
+          // Update tanda centang / kilau
+          const btn = $(`#dbDinding .db-btn-medali[data-id="${id}"]`);
+          if (btn) {
+            const kilau = btn.querySelector('.db-kilau');
+            if (kilau) { kilau.remove(); }
+            if (!btn.querySelector('.db-centang')) {
+              const cent = document.createElement('div');
+              cent.className = 'db-centang'; cent.textContent = '✓';
+              cent.setAttribute('aria-hidden', 'true');
+              btn.appendChild(cent);
+            }
+            btn.setAttribute('aria-label', dbFill(UI().ariaMedali, {
+              judul: m.judul,
+              kategori: (C().kategori[m.kategori] || Object.values(C().kategori)[0]).label,
+              status: UI().ariaSudah
+            }));
+          }
+          renderPenghitung(list);
+          emit('bangga:lihat', { id, n: st.dilihat.length, total: list.length });
+        }
+
+        // Highlight medali aktif
+        $$('#dbDinding .db-btn-medali').forEach(b => b.classList.remove('db-aktif'));
+        const btnAktif = $(`#dbDinding .db-btn-medali[data-id="${id}"]`);
+        if (btnAktif) btnAktif.classList.add('db-aktif');
+
+        // Tampilkan panel rincian
+        const kat = C().kategori[m.kategori] || Object.values(C().kategori)[0];
+        const detail = $('#dbDetail');
+        detail.classList.remove('hidden');
+
+        $('#dbDetailIko').innerHTML = spriteMedali(m.kategori, 64);
+        const katEl = $('#dbDetailKat');
+        katEl.textContent = kat.label;
+        katEl.style.background = kat.disc;
+        katEl.style.color = '#1a1033';
+        $('#dbDetailJudul').textContent = m.judul;
+        $('#dbDetailTtd').textContent = UI().ttd;
+
+        // Nomor
+        $('#dbDetailNomor').textContent = dbFill(UI().nomor, { n: idx + 1, total: list.length });
+
+        // Kisah
+        const kisahWrap = $('#dbDetailKisahWrap');
+        if (m.kisah && m.kisah.trim()) {
+          $('#dbDetailKisahLbl').textContent = UI().labelKisah;
+          $('#dbDetailKisah').textContent = m.kisah;
+          kisahWrap.classList.remove('hidden');
+        } else {
+          kisahWrap.classList.add('hidden');
+        }
+
+        // Teks dengan typeText (guard tok)
+        dbTok++; const tok = dbTok;
+        const teksEl = $('#dbDetailTeks');
+        teksEl.setAttribute('aria-hidden', 'true');
+        teksEl.textContent = '';
+        $('#dbSr').textContent = '';
+
+        const selesaiKetik = () => {
+          if (dbTok !== tok) return;
+          teksEl.removeAttribute('aria-hidden');
+          $('#dbSr').textContent = m.teks;
+          // Cek piala
+          cekPiala(tok);
+        };
+
+        sfx.coin();
+        const arrLihat = C().maskot.lihat;
+        if (typeof maskot !== 'undefined') maskot.say(arrLihat[Math.floor(Math.random() * arrLihat.length)], { ms: 3000 });
+
+        if (isRM) {
+          teksEl.textContent = m.teks;
+          selesaiKetik();
+        } else {
+          // Lewati pengetikan dengan klik di panel
+          let selesaiManual = false;
+          const lewatiFn = () => { if (!selesaiManual) { selesaiManual = true; teksEl.dispatchEvent(new Event('pointerdown')); } };
+          detail.addEventListener('pointerdown', lewatiFn, { once: true });
+          typeText(teksEl, m.teks, 20).then(() => {
+            detail.removeEventListener('pointerdown', lewatiFn);
+            selesaiKetik();
+          });
+        }
+
+        // scrollIntoView
+        if (!isRM) {
+          const t = setTimeout(() => detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+          dbAnimTs.push(t);
+        } else {
+          detail.scrollIntoView({ block: 'nearest' });
+        }
+      }
+
+      // ---- Cek dan buka piala ----
+      function cekPiala(tok) {
+        if (dbTok !== tok) return;
+        const st = dbStore.load();
+        if (st.piala) { renderPiala(); return; }
+        const list = daftarTampil();
+        const semuaDilihat = list.every(m => st.dilihat.includes(m.id));
+        if (!semuaDilihat) { renderPiala(); return; }
+
+        st.piala = true; dbStore.save();
+        emit('bangga:semua', {});
+
+        const isRM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const pialaBuka = () => {
+          renderPiala();
+          sfx.win();
+          if (!isRM) {
+            confetti(80);
+            if (typeof starRain !== 'undefined') starRain.burst({ jumlah: 60 });
+          }
+          toast(UI().toastPiala, 4000);
+          if (typeof maskot !== 'undefined') maskot.say(C().maskot.piala, { ms: 4000 });
+          if (!isRM) {
+            const t = setTimeout(() => {
+              const el = $('#dbPiala');
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 300);
+            dbAnimTs.push(t);
+          }
+        };
+        const t = setTimeout(pialaBuka, 800);
+        pialaDone = true;
+        dbAnimTs.push(t);
+      }
+
+      // ---- Navigasi prev/next ----
+      function nav(arah) {
+        const aktif = $('#dbDinding .db-btn-medali.db-aktif');
+        const list = daftarTampil();
+        let idx = aktif ? parseInt(aktif.dataset.idx) : -1;
+        idx = (idx + arah + list.length) % list.length;
+        buka(list[idx].id);
+      }
+
+      // ---- Cleanup ----
+      function cleanup() {
+        dbTok++; // Hentikan typeText
+        dbAnimTs.forEach(clearTimeout); dbAnimTs = [];
+        pialaDone = false;
+      }
+
+      // ---- Init (idempoten) ----
+      function init() {
+        const D = C();
+        if (!D.aktif) { const s = $('#dbSeksi'); if (s) s.classList.add('hidden'); return; }
+
+        if (!inited) {
+          inited = true;
+          // Tutup panel
+          $('#dbBtnTutup').addEventListener('click', () => {
+            sfx.tap(); $('#dbDetail').classList.add('hidden');
+            dbTok++;
+            $$('#dbDinding .db-btn-medali').forEach(b => b.classList.remove('db-aktif'));
+          });
+          $('#dbBtnSeb').addEventListener('click', () => { sfx.tap(); nav(-1); });
+          $('#dbBtnBer').addEventListener('click', () => { sfx.tap(); nav(1); });
+        }
+
+        // Reset panel
+        $('#dbDetail').classList.add('hidden');
+        $$('#dbDinding .db-btn-medali').forEach(b => b.classList.remove('db-aktif'));
+
+        render();
+      }
+
+      return { init, cleanup, render };
+    })();
+
+
     inits.fin = () => {
       emit('finale:start', {}); confetti(100); sfx.win(); startPhotoParticles();
       const L = $("#letter"); L.innerHTML = ""; CONFIG.surat.forEach((p, i) => { const el = document.createElement("p"); el.className = "letter-p"; el.textContent = fill(p); el.style.animationDelay = (i * .9) + "s"; L.appendChild(el); });
@@ -3676,8 +4421,9 @@
       bars.forEach((b, i) => { let w = CONFIG.kartu.stat[i].akhir; b.style.width = (typeof w === "number" ? w : 100) + "%"; b.parentElement.previousElementSibling.lastElementChild.textContent = w; });
       $("#kartuFinalContainer").classList.remove("hidden");
       setupZahwaTahan();
-      kontrak.init(); kueManager.init();
+      kontrak.init(); kueManager.init(); dindingBangga.init();
     };
+
 
     let sliderStage = 0;
     $("#seberapaSayang").addEventListener("input", e => {
